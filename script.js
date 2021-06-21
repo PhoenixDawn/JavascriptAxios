@@ -36,7 +36,6 @@ function makeRequest(search) {
       options: {},
     })
     .then((res) => {
-      console.log(res.data.docs);
       response = res.data.docs;
       displayData(res.data.docs);
     })
