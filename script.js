@@ -1,3 +1,5 @@
+let favourites = []
+
 function getShipNames() {
   axios
     .get("https://api.spacexdata.com/v4/ships")
@@ -117,6 +119,10 @@ function displayData(info) {
 }
 
 function addToFavorite(name) {
+  if (favourites.includes(name)){
+    alert(`You already have ${name} in your favourites!`)
+    return
+  }
   let favDiv = document.querySelector(".favorites");
   let li = document.createElement("li");
   let btn = document.createElement("button");
@@ -132,9 +138,11 @@ function addToFavorite(name) {
 
   btn.addEventListener("click", (e) => {
     e.stopPropagation();
+    favourites.splice(favourites.indexOf(name), 1)
     btn.remove();
     li.remove();
   });
+  favourites.push(name)
 }
 
 // Search Button Click
