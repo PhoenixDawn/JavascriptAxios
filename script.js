@@ -70,7 +70,7 @@ function displayData(info) {
     <p>Type: ${item.type}</p>
     <p>Weight: ${item.mass_kg} kg</p>
     <p>Roles:</p>
-    <div id="test"> </div>
+    <div id="rolesDiv"> </div>
     <img src="${item.img}" alt="">
     <div>
       <button id="backBtn">Back</button>
@@ -78,11 +78,15 @@ function displayData(info) {
     </div>
   </div>
   `
+  let p = document.createElement("p");
   for (i = 0; i < item.roles.length; i++) {
-    let p = document.createElement("p");
-    console.log(item.roles[i]);
-    p.innerHTML = item.roles[i];
-    document.querySelector("#test").appendChild(p);
+    if (i < item.roles.length -1){
+      p.innerHTML += `${item.roles[i]}, `;
+    }
+    else{
+      p.innerHTML += item.roles[i];
+    }
+    document.querySelector("#rolesDiv").appendChild(p);
   }
   document.getElementById("backBtn").addEventListener("click", (e) => {
     document.getElementById("destroyMe").remove();
