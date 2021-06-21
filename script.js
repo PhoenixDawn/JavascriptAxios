@@ -60,18 +60,18 @@ function removeOldList() {
 function displayData(info) {
   let displayDiv = document.getElementById("display");
 
-  let item = info[0]
+  let ship = info[0]
   
   displayDiv.innerHTML = `
   <div id="destroyMe">
-    <h3>${item.name}</h3>
-    <p>Year made: ${item.year_built}</p>
-    <p>Home Port: ${item.home_port}</p>
-    <p>Type: ${item.type}</p>
-    <p>Weight: ${item.mass_kg} kg</p>
+    <h3>${ship.name}</h3>
+    <p>Year made: ${ship.year_built}</p>
+    <p>Home Port: ${ship.home_port}</p>
+    <p>Type: ${ship.type}</p>
+    <p>Weight: ${ship.mass_kg} kg</p>
     <p>Roles:</p>
     <div id="rolesDiv"> </div>
-    <img src="${item.img}" alt="">
+    <img src="${ship.img}" alt="">
     <div>
       <button id="backBtn">Back</button>
       <button id="favouriteBtn">Add To Favourites</button>
@@ -79,12 +79,12 @@ function displayData(info) {
   </div>
   `
   let p = document.createElement("p");
-  for (i = 0; i < item.roles.length; i++) {
-    if (i < item.roles.length -1){
-      p.innerHTML += `${item.roles[i]}, `;
+  for (i = 0; i < ship.roles.length; i++) {
+    if (i < ship.roles.length -1){
+      p.innerHTML += `${ship.roles[i]}, `;
     }
     else{
-      p.innerHTML += item.roles[i];
+      p.innerHTML += ship.roles[i];
     }
     document.querySelector("#rolesDiv").appendChild(p);
   }
@@ -93,7 +93,7 @@ function displayData(info) {
     getShipNames();
   });
   document.getElementById("favouriteBtn").addEventListener("click", (e) => {
-    addToFavorite(item.name);
+    addToFavorite(ship.name);
   });
   
   document.getElementById("allShips").style.zIndex = -1
