@@ -6,12 +6,14 @@ function getShipNames() {
 }
 
 function displayAllShips(array) {
-  let displayShips = document.querySelector(".allShips");
+  let displayShips = document.getElementById("allShips");
   //   console.log(array.length())
   for (let item of array) {
     displayShips.innerHTML += `<li class="shipDisplay">${item.name}</li>`;
   }
   makeListItemsClickable();
+  document.getElementById("display").style.zIndex = -1
+  displayShips.style.zIndex = 1
 }
 
 function makeListItemsClickable() {
@@ -55,7 +57,7 @@ function removeOldList() {
 
 // Display Information
 function displayData(info) {
-  let displayDiv = document.querySelector(".display");
+  let displayDiv = document.getElementById("display");
   for (item of info) {
     let div = document.createElement("div");
     let h3 = document.createElement("h3");
@@ -111,6 +113,8 @@ function displayData(info) {
       addToFavorite(item.name);
     });
   }
+  document.getElementById("allShips").style.zIndex = -1
+  displayDiv.style.zIndex = 1
 }
 
 function addToFavorite(name) {

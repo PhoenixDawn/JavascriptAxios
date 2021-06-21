@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="script.js"></script>
     <title>Document</title>
-
-</head>
-<body>
+  </head>
+  <body>
     <h1>Super cool heading!</h1>
-    <form>
+    <div class="container">
+      <form id="form">
         <label for="search">Search by Name</label>
-        <input type="text" name="search" id="search">
-        <input type="submit" value="Find me!" id="search-btn">
-    </form>
-    <span class="allShips"></span>
-    <div class="display">
+        <input type="text" name="search" id="search" />
+        <input type="submit" value="Find me!" id="search-btn" />
+      </form>
+      <div id="allShips"></div>
+      <div id="display"></div>
+      <div id="favourites">
+        <h3>Favourites:</h3>
+        <ul class="favorites"></ul>
+      </div>
     </div>
-    <h3>Favourites:</h3>
-    <ul class="favorites"></ul>
-</body>
+  </body>
 </html>

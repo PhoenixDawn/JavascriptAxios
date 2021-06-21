@@ -1,0 +1,28 @@
+.container{
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+      "header header header header"
+      "main main main sidebar"
+      "footer footer footer footer";
+}
+
+#form{
+    grid-area: header;
+}
+
+#favourites{
+    grid-area: sidebar;
+    background-color: pink;
+}
+
+#allShips{
+    grid-area: main;
+    background-color: lightblue;
+}
+#display{
+    grid-area: main;
+    background-color: lightgreen;
+    /* z-index: -1; */
+}
