@@ -59,61 +59,39 @@ function removeOldList() {
 // Display Information
 function displayData(info) {
   let displayDiv = document.getElementById("display");
-  for (item of info) {
-    let div = document.createElement("div");
-    let h3 = document.createElement("h3");
-    let pYear = document.createElement("p");
-    let pHomePort = document.createElement("p");
-    let pType = document.createElement("p");
-    let pWeight = document.createElement("p");
-    let btnBack = document.createElement("button");
-    let btnFav = document.createElement("button");
 
-    let divRole = document.createElement("div");
-    let pRoles = document.createElement("p");
-
-    let image = document.createElement(`img`);
-
-    //Display roles
-    for (i = 0; i < item.roles.length; i++) {
-      let p = document.createElement("p");
-      console.log(item.roles[i]);
-      p.innerHTML = item.roles[i];
-      divRole.appendChild(p);
-    }
-
-    pYear.innerHTML = `Year made: ${item.year_built}`;
-    pHomePort.innerHTML = `Home Port: ${item.home_port}`;
-    pType.innerHTML = `Type: ${item.type}`;
-    pRoles.innerHTML = "Roles:";
-    pWeight.innerHTML = `Weight kg: ${item.mass_kg}`;
-    btnBack.innerHTML = "Back";
-    btnFav.innerHTML = "Add to favourite";
-    image.src = item.image;
-
-    h3.innerHTML = item.name;
-    div.appendChild(h3);
-    div.appendChild(pYear);
-    div.appendChild(pHomePort);
-    div.appendChild(pType);
-    div.appendChild(pWeight);
-    div.appendChild(pRoles);
-    div.appendChild(divRole);
-    div.appendChild(image);
-    div.append(btnBack);
-    div.append(btnFav);
-    div.id = "destroyMe";
-    displayDiv.append(div);
-
-    //Add a back button
-    btnBack.addEventListener("click", (e) => {
-      div.remove();
-      getShipNames();
-    });
-    btnFav.addEventListener("click", (e) => {
-      addToFavorite(item.name);
-    });
+  let item = info[0]
+  
+  displayDiv.innerHTML = `
+  <div id="destroyMe">
+    <h3>${item.name}</h3>
+    <p>Year made: ${item.year_built}</p>
+    <p>Home Port: ${item.home_port}</p>
+    <p>Type: ${item.type}</p>
+    <p>Weight: ${item.mass_kg} kg</p>
+    <p>Roles:</p>
+    <div id="test"> </div>
+    <img src="${item.img}" alt="">
+    <div>
+      <button id="backBtn">Back</button>
+      <button id="favouriteBtn">Add To Favourites</button>
+    </div>
+  </div>
+  `
+  for (i = 0; i < item.roles.length; i++) {
+    let p = document.createElement("p");
+    console.log(item.roles[i]);
+    p.innerHTML = item.roles[i];
+    document.querySelector("#test").appendChild(p);
   }
+  document.getElementById("backBtn").addEventListener("click", (e) => {
+    document.getElementById("destroyMe").remove();
+    getShipNames();
+  });
+  document.getElementById("favouriteBtn").addEventListener("click", (e) => {
+    addToFavorite(item.name);
+  });
+  
   document.getElementById("allShips").style.zIndex = -1
   displayDiv.style.zIndex = 1
 }
